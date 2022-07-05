@@ -8,5 +8,3 @@ class Snake:
         self.coordinates_x = []
         self.coordinates_y = []
         self.speed = 10
-    # Добавить свое по желанию
-    pass
