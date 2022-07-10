@@ -1,5 +1,5 @@
-from snake_constants import BLOCK_SIZE, SNAKE_COLOR
 from pygame import Surface
+from snake_constants import BLOCK_SIZE, SNAKE_COLOR
 
 
 class Snake:
