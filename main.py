@@ -1,6 +1,6 @@
 import pygame
 
-from pygame import display, event, key
+from pygame import display, event, key, draw
 from pygame import QUIT, K_ESCAPE
 from snake_constants import *
 from land import Land
@@ -14,6 +14,12 @@ def game():
     play = True  # Работает ли игровое окно или нет
     while play:
         land.draw()
+
+        for i in range(0, SCREEN_LENGTH, BLOCK_SIZE):
+            draw.line(screen, "black", (i, 0), (i, SCREEN_WIDTH))
+            
+        for i in range(0, SCREEN_WIDTH, BLOCK_SIZE):
+            draw.line(screen, "black", (0, i), (SCREEN_LENGTH, i))
 
         display.update()
 
@@ -29,6 +35,3 @@ def game():
 
 if __name__ == "__main__":
     game()
-
-
-
