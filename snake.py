@@ -1,6 +1,7 @@
-from pygame import Surface
-from snake_constants import BLOCK_SIZE, SNAKE_COLOR, SCREEN_LENGTH
 from random import randint
+
+from pygame import Surface
+from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SNAKE_COLOR
 
 
 class Snake:
@@ -13,7 +14,6 @@ class Snake:
         self.coordinates_x: list[int] = []
         self.coordinates_y: list[int] = []
         self.speed = BLOCK_SIZE
-
 
     def eat(self) -> bool:
         """Ест яблоки"""
