@@ -5,6 +5,7 @@ from pygame import QUIT, K_ESCAPE
 from snake_constants import *
 from land import Land
 
+
 screen = display.set_mode((SCREEN_LENGTH, SCREEN_WIDTH))  # Игровое окно
 land = Land(screen)  # Задний фон
 

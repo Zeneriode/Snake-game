@@ -5,6 +5,7 @@ from pygame import Surface, Rect
 class Land:
     """Задний фон игры"""
 
+
     def __init__(self, surface: Surface) -> None:
         """Базовый конструктор для создания фона игры"""
         self.color = LAND_COLOR

@@ -14,6 +14,7 @@ class Snake:
         self.coordinates_y: list[int] = []
         self.speed = BLOCK_SIZE
 
+
     def eat(self) -> bool:
         """Ест яблоки"""
         pass
