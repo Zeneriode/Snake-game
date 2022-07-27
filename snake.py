@@ -1,7 +1,12 @@
 from random import randint
 
 from pygame import Rect, Surface, draw
-from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, SNAKE_COLOR
+from snake_constants import (
+    BLOCK_SIZE,
+    SCREEN_LENGTH,
+    SCREEN_WIDTH,
+    SNAKE_COLOR,
+)
 
 
 class Snake:
@@ -9,7 +14,11 @@ class Snake:
         self.size = BLOCK_SIZE
         self.color = SNAKE_COLOR
         self.surface = surface
-        x = randint(BLOCK_SIZE, SCREEN_LENGTH - BLOCK_SIZE * 3) // BLOCK_SIZE * BLOCK_SIZE
+        x = (
+            randint(BLOCK_SIZE, SCREEN_LENGTH - BLOCK_SIZE * 3)
+            // BLOCK_SIZE
+            * BLOCK_SIZE
+        )
         y = randint(BLOCK_SIZE, SCREEN_WIDTH) // BLOCK_SIZE * BLOCK_SIZE
         self.coordinates_x: list[int] = [x, x - BLOCK_SIZE]
         self.coordinates_y: list[int] = [y, y]
@@ -32,8 +41,12 @@ class Snake:
         pass
 
     def draw(self) -> None:
-        """Прорисовка цвета змеи"""
+        """Прорисовка змеи"""
         for i in range(len(self.coordinates_x)):
-            draw.rect(self.surface,
-            self.color,
-            Rect(self.coordinates_x[i], self.coordinates_y[i], self.size, self.size))
+            draw.rect(
+                self.surface,
+                self.color,
+                Rect(
+                    self.coordinates_x[i], self.coordinates_y[i], self.size, self.size
+                ),
+            )
