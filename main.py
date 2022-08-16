@@ -21,6 +21,12 @@ def game():
         for i in range(0, SCREEN_WIDTH, BLOCK_SIZE):
             draw.line(screen, "black", (0, i), (SCREEN_LENGTH, i))
 
+        for i in range(0, SCREEN_LENGTH, BLOCK_SIZE):
+            draw.line(screen, "black", (i, 0), (i, SCREEN_WIDTH))
+
+        for i in range(0, SCREEN_WIDTH, BLOCK_SIZE):
+            draw.line(screen, "black", (0, i), (SCREEN_LENGTH, i))
+
         display.update()
 
         # Проверка, что игрок нажал на кнопку "закрыть"
