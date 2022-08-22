@@ -1,12 +1,7 @@
 from random import randint
 
 from pygame import Rect, Surface, draw
-from snake_constants import (
-    BLOCK_SIZE,
-    SCREEN_LENGTH,
-    SCREEN_WIDTH,
-    FOOD_COLOR,
-)
+from snake_constants import BLOCK_SIZE, FOOD_COLOR, SCREEN_LENGTH, SCREEN_WIDTH
 
 
 class Food:
@@ -26,7 +21,6 @@ class Food:
         draw.rect(
             self.surface,
             self.color,
-            Rect(
-                self.x, self.y, self.size, self.size
-            ),
+            Rect(self.x, self.y, self.size, self.size),
         )
+

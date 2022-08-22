@@ -1,8 +1,8 @@
-from land import Land
-from snake import Snake
 from food import Food
+from land import Land
 from pygame import K_ESCAPE, QUIT, display, draw, event, key
-from snake_constants import SCREEN_LENGTH, SCREEN_WIDTH, BLOCK_SIZE
+from snake import Snake
+from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH
 
 screen = display.set_mode((SCREEN_LENGTH, SCREEN_WIDTH))  # Игровое окно
 land = Land(screen)  # Задний фон
