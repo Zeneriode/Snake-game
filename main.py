@@ -1,11 +1,13 @@
 from land import Land
 from snake import Snake
+from food import Food
 from pygame import K_ESCAPE, QUIT, display, draw, event, key
 from snake_constants import SCREEN_LENGTH, SCREEN_WIDTH, BLOCK_SIZE
 
 screen = display.set_mode((SCREEN_LENGTH, SCREEN_WIDTH))  # Игровое окно
 land = Land(screen)  # Задний фон
 snake = Snake(screen)  # Змея
+food = Food(screen)  # еда
 
 
 def game():
@@ -14,6 +16,7 @@ def game():
     while play:
         land.draw()
         snake.draw()
+        food.draw()
 
         for i in range(0, SCREEN_LENGTH, BLOCK_SIZE):
             draw.line(screen, "black", (i, 0), (i, SCREEN_WIDTH))
