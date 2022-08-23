@@ -23,4 +23,3 @@ class Food:
             self.color,
             Rect(self.x, self.y, self.size, self.size),
         )
-
