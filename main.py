@@ -1,6 +1,6 @@
+from pygame import K_ESCAPE, QUIT, display, draw, event, key, time
 from food import Food
 from land import Land
-from pygame import K_ESCAPE, QUIT, display, draw, event, key
 from snake import Snake
 from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH
 
@@ -8,6 +8,7 @@ screen = display.set_mode((SCREEN_LENGTH, SCREEN_WIDTH))  # Игровое ок�
 land = Land(screen)  # Задний фон
 snake = Snake(screen)  # Змея
 food = Food(screen)  # еда
+clock = time.Clock()
 
 
 def game():
@@ -17,6 +18,8 @@ def game():
         land.draw()
         snake.draw()
         food.draw()
+        snake.move()
+        snake.change_direction()
 
         for i in range(0, SCREEN_LENGTH, BLOCK_SIZE):
             draw.line(screen, "black", (i, 0), (i, SCREEN_WIDTH))
@@ -25,6 +28,7 @@ def game():
             draw.line(screen, "black", (0, i), (SCREEN_LENGTH, i))
 
         display.update()
+        clock.tick(2)
 
         # Проверка, что игрок нажал на кнопку "закрыть"
         for e in event.get():

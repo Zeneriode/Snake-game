@@ -1,6 +1,6 @@
 from random import randint
 
-from pygame import Rect, Surface, draw
+from pygame import K_w, K_a, K_s, K_d, Rect, Surface, draw, key
 from snake_constants import (
     BLOCK_SIZE,
     SCREEN_LENGTH,
@@ -14,10 +14,11 @@ class Snake:
         self.size = BLOCK_SIZE
         self.color = SNAKE_COLOR
         self.surface = surface
+        self.direction = None
         x = (
-            randint(BLOCK_SIZE, SCREEN_LENGTH - BLOCK_SIZE * 3)
-            // BLOCK_SIZE
-            * BLOCK_SIZE
+                randint(BLOCK_SIZE, SCREEN_LENGTH - BLOCK_SIZE * 3)
+                // BLOCK_SIZE
+                * BLOCK_SIZE
         )
         y = randint(BLOCK_SIZE, SCREEN_WIDTH) // BLOCK_SIZE * BLOCK_SIZE
         self.coordinates_x: list[int] = [x, x - BLOCK_SIZE]
@@ -30,11 +31,31 @@ class Snake:
 
     def move(self) -> None:
         """Двигает змею"""
-        pass
+        if self.direction == "r":
+            self.coordinates_x[0] += self.speed
+
+        elif self.direction == "l":
+            self.coordinates_x[0] -= self.speed
+
+        elif self.direction == "u":
+            self.coordinates_y[0] -= self.speed
+
+        elif self.direction == "d":
+            self.coordinates_y[0] += self.speed
 
     def change_direction(self) -> None:
         """Поворачивает змею"""
-        pass
+        if key.get_pressed()[K_w]:
+            self.direction = "u"
+
+        elif key.get_pressed()[K_a]:
+            self.direction = "l"
+
+        elif key.get_pressed()[K_s]:
+            self.direction = "d"
+
+        elif key.get_pressed()[K_d]:
+            self.direction = "r"
 
     def check_collision(self) -> bool:
         """Проверяет не врезалась ли змея"""
