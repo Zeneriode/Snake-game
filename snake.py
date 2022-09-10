@@ -31,6 +31,10 @@ class Snake:
 
     def move(self) -> None:
         """Двигает змею"""
+        for i in range(len(self.coordinates_x) - 1, 0, -1):
+            self.coordinates_x[i] = self.coordinates_x[i - 1]
+            self.coordinates_y[i] = self.coordinates_y[i - 1]
+
         if self.direction == "r":
             self.coordinates_x[0] += self.speed
 

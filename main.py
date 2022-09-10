@@ -8,7 +8,7 @@ screen = display.set_mode((SCREEN_LENGTH, SCREEN_WIDTH))  # Игровое ок�
 land = Land(screen)  # Задний фон
 snake = Snake(screen)  # Змея
 food = Food(screen)  # еда
-clock = time.Clock()
+clock = time.Clock()  # смена кадров
 
 
 def game():
