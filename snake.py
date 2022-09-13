@@ -1,6 +1,6 @@
 from random import randint
 
-from pygame import K_w, K_a, K_s, K_d, Rect, Surface, draw, key
+from pygame import K_a, K_d, K_s, K_w, Rect, Surface, draw, key
 from snake_constants import (
     BLOCK_SIZE,
     SCREEN_LENGTH,
@@ -14,11 +14,11 @@ class Snake:
         self.size = BLOCK_SIZE
         self.color = SNAKE_COLOR
         self.surface = surface
-        self.direction = None
+        self.direction = ""
         x = (
-                randint(BLOCK_SIZE, SCREEN_LENGTH - BLOCK_SIZE * 3)
-                // BLOCK_SIZE
-                * BLOCK_SIZE
+            randint(BLOCK_SIZE, SCREEN_LENGTH - BLOCK_SIZE * 3)
+            // BLOCK_SIZE
+            * BLOCK_SIZE
         )
         y = randint(BLOCK_SIZE, SCREEN_WIDTH) // BLOCK_SIZE * BLOCK_SIZE
         self.coordinates_x: list[int] = [x, x - BLOCK_SIZE]

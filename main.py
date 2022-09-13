@@ -1,6 +1,6 @@
-from pygame import K_ESCAPE, QUIT, display, draw, event, key, time
 from food import Food
 from land import Land
+from pygame import K_ESCAPE, QUIT, display, draw, event, key, time
 from snake import Snake
 from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH
 
