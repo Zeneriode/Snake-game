@@ -14,10 +14,7 @@ clock = time.Clock()  # смена кадров
 def check_food():
     """Проверяет, надо ли есть еду"""
     global food
-    if (
-        snake.coordinates_x[0] == food.x
-        and snake.coordinates_y[0] == food.y
-    ):
+    if snake.coordinates_x[0] == food.x and snake.coordinates_y[0] == food.y:
         food = Food(screen)
 
 
