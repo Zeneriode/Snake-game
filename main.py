@@ -11,6 +11,16 @@ food = Food(screen)  # еда
 clock = time.Clock()  # смена кадров
 
 
+def check_food():
+    """Проверяет, надо ли есть еду"""
+    global food
+    if (
+        snake.coordinates_x[0] == food.x
+        and snake.coordinates_y[0] == food.y
+    ):
+        food = Food(screen)
+
+
 def game():
     """Игра запускается и работает до выключения пользователем"""
     play = True  # Работает ли игровое окно или нет
@@ -20,6 +30,7 @@ def game():
         food.draw()
         snake.move()
         snake.change_direction()
+        check_food()
 
         for i in range(0, SCREEN_LENGTH, BLOCK_SIZE):
             draw.line(screen, "black", (i, 0), (i, SCREEN_WIDTH))
