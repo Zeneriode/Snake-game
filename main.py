@@ -13,21 +13,26 @@ clock = time.Clock()  # смена кадров
 
 def check_food():
     """Проверяет, надо ли есть еду"""
-    global food
-    if snake.coordinates_x[0] == food.x and snake.coordinates_y[0] == food.y:
+    global food, snake
+    if snake.coordinates_x[0] == food.x_coordinate and snake.coordinates_y[0] == food.y_coordinate:
         food = Food(screen)
+        snake.grow()
 
 
 def game():
     """Игра запускается и работает до выключения пользователем"""
+    global land, snake, food, screen, clock
     play = True  # Работает ли игровое окно или нет
+    frame = 0
     while play:
-        land.draw()
-        snake.draw()
-        food.draw()
-        snake.move()
+        if frame % 20 == 0:
+            land.draw()
+            snake.draw()
+            food.draw()
+            snake.move()
+            check_food()
+
         snake.change_direction()
-        check_food()
 
         for i in range(0, SCREEN_LENGTH, BLOCK_SIZE):
             draw.line(screen, "black", (i, 0), (i, SCREEN_WIDTH))
@@ -36,11 +41,14 @@ def game():
             draw.line(screen, "black", (0, i), (SCREEN_LENGTH, i))
 
         display.update()
-        clock.tick(2)
+        clock.tick(200)
+        frame += 1
+
+        play = snake.check_collision()
 
         # Проверка, что игрок нажал на кнопку "закрыть"
-        for e in event.get():
-            if e.type == QUIT:
+        for e_check in event.get():
+            if e_check.type == QUIT:
                 play = False
 
         # Проверка, что игрок нажал esc

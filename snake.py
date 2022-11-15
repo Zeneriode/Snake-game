@@ -1,6 +1,10 @@
+"""
+Реализация класса змеи
+"""
 from random import randint
-
+# pylint: disable=no-name-in-module
 from pygame import K_a, K_d, K_s, K_w, Rect, Surface, draw, key
+# pylint: disable=import-error
 from snake_constants import (
     BLOCK_SIZE,
     SCREEN_LENGTH,
@@ -10,24 +14,27 @@ from snake_constants import (
 
 
 class Snake:
+    """Змея, которая ползает по игровому полю"""
+
     def __init__(self, surface: Surface) -> None:
         self.size = BLOCK_SIZE
         self.color = SNAKE_COLOR
         self.surface = surface
         self.direction = ""
-        x = (
+        head_x = (
             randint(BLOCK_SIZE, SCREEN_LENGTH - BLOCK_SIZE * 3)
             // BLOCK_SIZE
             * BLOCK_SIZE
         )
-        y = randint(BLOCK_SIZE, SCREEN_WIDTH) // BLOCK_SIZE * BLOCK_SIZE
-        self.coordinates_x: list[int] = [x, x - BLOCK_SIZE]
-        self.coordinates_y: list[int] = [y, y]
+        head_y = randint(BLOCK_SIZE, SCREEN_WIDTH) // BLOCK_SIZE * BLOCK_SIZE
+        self.coordinates_x: list[int] = [head_x, head_x - BLOCK_SIZE]
+        self.coordinates_y: list[int] = [head_y, head_y]
         self.speed = BLOCK_SIZE
 
-    def eat(self) -> bool:
-        """Ест яблоки"""
-        pass
+    def grow(self) -> None:
+        """Змея растёт"""
+        self.coordinates_x.append(-BLOCK_SIZE)
+        self.coordinates_y.append(-BLOCK_SIZE)
 
     def move(self) -> None:
         """Двигает змею"""
@@ -63,11 +70,12 @@ class Snake:
 
     def check_collision(self) -> bool:
         """Проверяет не врезалась ли змея"""
-        pass
+        return 0 <= self.coordinates_x[0] <= SCREEN_LENGTH and 0 <= self.coordinates_y[0] <= SCREEN_WIDTH
 
     def draw(self) -> None:
         """Прорисовка змеи"""
-        for i in range(len(self.coordinates_x)):
+        number_of_iterations = len(self.coordinates_x)
+        for i in range(number_of_iterations):
             draw.rect(
                 self.surface,
                 self.color,

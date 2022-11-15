@@ -1,3 +1,6 @@
+"""
+Реализация констант
+"""
 SCREEN_LENGTH = 1540
 SCREEN_WIDTH = 875
 BLOCK_SIZE = 35

@@ -1,7 +1,11 @@
+"""
+Реализация класса земли
+"""
 from pygame import Rect, Surface, draw
 from snake_constants import LAND_COLOR, SCREEN_LENGTH, SCREEN_WIDTH
 
 
+# pylint: disable=too-few-public-methods
 class Land:
     """Задний фон игры"""
 
