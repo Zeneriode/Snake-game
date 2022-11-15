@@ -2,15 +2,12 @@
 Реализация класса змеи
 """
 from random import randint
+
 # pylint: disable=no-name-in-module
 from pygame import K_a, K_d, K_s, K_w, Rect, Surface, draw, key
+
 # pylint: disable=import-error
-from snake_constants import (
-    BLOCK_SIZE,
-    SCREEN_LENGTH,
-    SCREEN_WIDTH,
-    SNAKE_COLOR,
-)
+from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, SNAKE_COLOR
 
 
 class Snake:
@@ -70,7 +67,10 @@ class Snake:
 
     def check_collision(self) -> bool:
         """Проверяет не врезалась ли змея"""
-        return 0 <= self.coordinates_x[0] <= SCREEN_LENGTH and 0 <= self.coordinates_y[0] <= SCREEN_WIDTH
+        return (
+            0 <= self.coordinates_x[0] <= SCREEN_LENGTH
+            and 0 <= self.coordinates_y[0] <= SCREEN_WIDTH
+        )
 
     def draw(self) -> None:
         """Прорисовка змеи"""
