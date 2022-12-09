@@ -2,13 +2,13 @@
 Реализация класса змеи
 """
 from random import randint
+from typing import Tuple, Optional
 
 # pylint: disable=no-name-in-module
 from pygame import K_a, K_d, K_s, K_w, Rect, Surface, draw, key
 
 # pylint: disable=import-error
 from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, SNAKE_COLOR
-from typing import Tuple, Optional
 
 
 class Snake:

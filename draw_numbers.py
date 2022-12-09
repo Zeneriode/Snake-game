@@ -28,7 +28,7 @@ class Number:
         for block in blocks:
             draw.rect(
                 self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-                )
+            )
 
     def __number_2(self, center_x: int, center_y: int):
         """Создание пикселей второго числа"""
@@ -48,7 +48,7 @@ class Number:
         for block in blocks:
             draw.rect(
                 self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-                )
+            )
 
     def __number_3(self, center_x: int, center_y: int):
         """Создание пикселей третьего числа"""
@@ -68,7 +68,7 @@ class Number:
         for block in blocks:
             draw.rect(
                 self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-                )
+            )
 
     def __number_4(self, center_x: int, center_y: int):
         """Создание пикселей четвёртого числа"""
@@ -86,7 +86,7 @@ class Number:
         for block in blocks:
             draw.rect(
                 self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-                )
+            )
 
     def __number_5(self, center_x: int, center_y: int):
         """Создание пикселей пятого числа"""
@@ -106,7 +106,7 @@ class Number:
         for block in blocks:
             draw.rect(
                 self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-                )
+            )
 
     def __number_6(self, center_x: int, center_y: int):
         """Создание пикселей шестого числа"""
@@ -127,7 +127,7 @@ class Number:
         for block in blocks:
             draw.rect(
                 self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-                )
+            )
 
     def __number_7(self, center_x: int, center_y: int):
         """Создание пикселей седьмого числа"""
@@ -144,7 +144,7 @@ class Number:
         for block in blocks:
             draw.rect(
                 self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-                )
+            )
 
     def __number_8(self, center_x: int, center_y: int):
         """Создание пикселей восьмого числа"""
@@ -166,7 +166,7 @@ class Number:
         for block in blocks:
             draw.rect(
                 self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-                )
+            )
 
     def __number_9(self, center_x: int, center_y: int):
         """Создание пикселей девятого числа"""
@@ -187,7 +187,7 @@ class Number:
         for block in blocks:
             draw.rect(
                 self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-                )
+            )
 
     def __number_0(self, center_x: int, center_y: int):
         """Создание пикселей нулевого числа"""
@@ -208,7 +208,7 @@ class Number:
         for block in blocks:
             draw.rect(
                 self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-                )
+            )
 
     # pylint: disable=too-many-return-statements
     def __one_digit(self, points: int, center_x: int = None, center_y: int = None):
