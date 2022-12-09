@@ -1,7 +1,9 @@
 from food import Food
 from land import Land
+from time import sleep
 from pygame import K_ESCAPE, QUIT, display, draw, event, key, time
 from snake import Snake
+from draw_numbers import Number
 from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH
 
 screen = display.set_mode((SCREEN_LENGTH, SCREEN_WIDTH))  # Игровое окно
@@ -9,11 +11,13 @@ land = Land(screen)  # Задний фон
 snake = Snake(screen)  # Змея
 food = Food(screen)  # еда
 clock = time.Clock()  # смена кадров
+result = Number(screen)
+reason_of_death = None
 
 
 def check_food():
     """Проверяет, надо ли есть еду"""
-    global food, snake
+    global food
     if snake.coordinates_x[0] == food.x_coordinate and snake.coordinates_y[0] == food.y_coordinate:
         food = Food(screen)
         snake.grow()
@@ -21,11 +25,11 @@ def check_food():
 
 def game():
     """Игра запускается и работает до выключения пользователем"""
-    global land, snake, food, screen, clock
+    global reason_of_death
     play = True  # Работает ли игровое окно или нет
     frame = 0
     while play:
-        if frame % 20 == 0:
+        if frame % 35 == 0:
             land.draw()
             snake.draw()
             food.draw()
@@ -44,7 +48,7 @@ def game():
         clock.tick(200)
         frame += 1
 
-        play = snake.check_collision()
+        play, reason_of_death = snake.check_collision()
 
         # Проверка, что игрок нажал на кнопку "закрыть"
         for e_check in event.get():
@@ -56,5 +60,17 @@ def game():
             play = False
 
 
+def game_over():
+    """Конец игры"""
+    # причины смерти:
+    # 1) столкновение со стенкой
+    # 2) выход из игры
+    land.draw()
+    result.draw(len(snake))
+    display.update()
+    sleep(1.5)
+
+
 if __name__ == "__main__":
     game()
+    game_over()
