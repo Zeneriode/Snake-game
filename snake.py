@@ -2,8 +2,10 @@
 Реализация класса змеи
 """
 from random import randint
+
 # pylint: disable=no-name-in-module
 from pygame import K_a, K_d, K_s, K_w, Rect, Surface, draw, key
+
 # pylint: disable=import-error
 from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, SNAKE_COLOR
 from typing import Tuple, Optional
@@ -18,9 +20,9 @@ class Snake:
         self.surface = surface
         self.direction = ""
         head_x = (
-                randint(BLOCK_SIZE, SCREEN_LENGTH - BLOCK_SIZE * 3)
-                // BLOCK_SIZE
-                * BLOCK_SIZE
+            randint(BLOCK_SIZE, SCREEN_LENGTH - BLOCK_SIZE * 3)
+            // BLOCK_SIZE
+            * BLOCK_SIZE
         )
         head_y = randint(BLOCK_SIZE, SCREEN_WIDTH) // BLOCK_SIZE * BLOCK_SIZE
         self.coordinates_x: list[int] = [head_x, head_x - BLOCK_SIZE]
@@ -69,8 +71,10 @@ class Snake:
 
     def check_collision(self) -> Tuple[bool, Optional[str]]:
         """Проверяет не врезалась ли змея"""
-        if 0 <= self.coordinates_x[0] <= SCREEN_LENGTH \
-           and 0 <= self.coordinates_y[0] <= SCREEN_WIDTH:
+        if (
+            0 <= self.coordinates_x[0] <= SCREEN_LENGTH
+            and 0 <= self.coordinates_y[0] <= SCREEN_WIDTH
+        ):
             return True, None
         return False, "Ты врезался в стену!"
 
