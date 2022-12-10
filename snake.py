@@ -2,7 +2,7 @@
 Реализация класса змеи
 """
 from random import randint
-from typing import Tuple, Optional
+from typing import Optional, Tuple
 
 # pylint: disable=no-name-in-module
 from pygame import K_a, K_d, K_s, K_w, Rect, Surface, draw, key

@@ -15,7 +15,13 @@ class Number:
         self.color = SNAKE_COLOR
         self.surface = surface
 
-    def __number_1(self, center_x: int, center_y: int):
+    def __number(self, blocks: list[tuple[float, float]]):
+        for block in blocks:
+            draw.rect(
+                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
+            )
+
+    def __number_1(self, center_x: float, center_y: float):
         """Создание пикселей первого числа"""
         blocks: list[tuple[float, float]] = [
             (center_x - BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
@@ -25,12 +31,9 @@ class Number:
             (center_x - BLOCK_SIZE / 2, center_y + BLOCK_SIZE * 2),
             (center_x - BLOCK_SIZE / 2 * 3, center_y - BLOCK_SIZE),
         ]
-        for block in blocks:
-            draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-            )
+        self.__number(blocks)
 
-    def __number_2(self, center_x: int, center_y: int):
+    def __number_2(self, center_x: float, center_y: float):
         """Создание пикселей второго числа"""
         blocks: list[tuple[float, float]] = [
             (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
@@ -45,12 +48,9 @@ class Number:
             (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE),
             (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE * 2),
         ]
-        for block in blocks:
-            draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-            )
+        self.__number(blocks)
 
-    def __number_3(self, center_x: int, center_y: int):
+    def __number_3(self, center_x: float, center_y: float):
         """Создание пикселей третьего числа"""
         blocks: list[tuple[float, float]] = [
             (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
@@ -65,12 +65,9 @@ class Number:
             (center_x - BLOCK_SIZE / 2 * 3, center_y),
             (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE * 2),
         ]
-        for block in blocks:
-            draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-            )
+        self.__number(blocks)
 
-    def __number_4(self, center_x: int, center_y: int):
+    def __number_4(self, center_x: float, center_y: float):
         """Создание пикселей четвёртого числа"""
         blocks: list[tuple[float, float]] = [
             (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
@@ -83,12 +80,9 @@ class Number:
             (center_x - BLOCK_SIZE / 2 * 3, center_y - BLOCK_SIZE),
             (center_x - BLOCK_SIZE / 2 * 3, center_y),
         ]
-        for block in blocks:
-            draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-            )
+        self.__number(blocks)
 
-    def __number_5(self, center_x: int, center_y: int):
+    def __number_5(self, center_x: float, center_y: float):
         """Создание пикселей пятого числа"""
         blocks: list[tuple[float, float]] = [
             (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
@@ -103,12 +97,9 @@ class Number:
             (center_x - BLOCK_SIZE / 2 * 3, center_y),
             (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE * 2),
         ]
-        for block in blocks:
-            draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-            )
+        self.__number(blocks)
 
-    def __number_6(self, center_x: int, center_y: int):
+    def __number_6(self, center_x: float, center_y: float):
         """Создание пикселей шестого числа"""
         blocks: list[tuple[float, float]] = [
             (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
@@ -124,12 +115,9 @@ class Number:
             (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE),
             (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE * 2),
         ]
-        for block in blocks:
-            draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-            )
+        self.__number(blocks)
 
-    def __number_7(self, center_x: int, center_y: int):
+    def __number_7(self, center_x: float, center_y: float):
         """Создание пикселей седьмого числа"""
         blocks: list[tuple[float, float]] = [
             (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
@@ -141,55 +129,29 @@ class Number:
             (center_x - BLOCK_SIZE / 2 * 3, center_y - BLOCK_SIZE * 2),
             (center_x - BLOCK_SIZE / 2 * 3, center_y - BLOCK_SIZE),
         ]
-        for block in blocks:
-            draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-            )
+        self.__number(blocks)
 
-    def __number_8(self, center_x: int, center_y: int):
+    def __number_8(self, center_x: float, center_y: float):
         """Создание пикселей восьмого числа"""
         blocks: list[tuple[float, float]] = [
-            (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
-            (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE),
-            (center_x + BLOCK_SIZE / 2, center_y),
-            (center_x + BLOCK_SIZE / 2, center_y + BLOCK_SIZE),
-            (center_x + BLOCK_SIZE / 2, center_y + BLOCK_SIZE * 2),
-            (center_x - BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
-            (center_x - BLOCK_SIZE / 2, center_y),
-            (center_x - BLOCK_SIZE / 2, center_y + BLOCK_SIZE * 2),
             (center_x - BLOCK_SIZE / 2 * 3, center_y - BLOCK_SIZE * 2),
             (center_x - BLOCK_SIZE / 2 * 3, center_y - BLOCK_SIZE),
             (center_x - BLOCK_SIZE / 2 * 3, center_y),
             (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE),
             (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE * 2),
         ]
-        for block in blocks:
-            draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-            )
+        self.__number_3(center_x, center_y)
+        self.__number(blocks)
 
-    def __number_9(self, center_x: int, center_y: int):
+    def __number_9(self, center_x: float, center_y: float):
         """Создание пикселей девятого числа"""
         blocks: list[tuple[float, float]] = [
-            (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
-            (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE),
-            (center_x + BLOCK_SIZE / 2, center_y),
-            (center_x + BLOCK_SIZE / 2, center_y + BLOCK_SIZE),
-            (center_x + BLOCK_SIZE / 2, center_y + BLOCK_SIZE * 2),
-            (center_x - BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
-            (center_x - BLOCK_SIZE / 2, center_y),
-            (center_x - BLOCK_SIZE / 2, center_y + BLOCK_SIZE * 2),
-            (center_x - BLOCK_SIZE / 2 * 3, center_y - BLOCK_SIZE * 2),
             (center_x - BLOCK_SIZE / 2 * 3, center_y - BLOCK_SIZE),
-            (center_x - BLOCK_SIZE / 2 * 3, center_y),
-            (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE * 2),
         ]
-        for block in blocks:
-            draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-            )
+        self.__number_3(center_x, center_y)
+        self.__number(blocks)
 
-    def __number_0(self, center_x: int, center_y: int):
+    def __number_0(self, center_x: float, center_y: float):
         """Создание пикселей нулевого числа"""
         blocks: list[tuple[float, float]] = [
             (center_x + BLOCK_SIZE / 2, center_y - BLOCK_SIZE * 2),
@@ -205,18 +167,11 @@ class Number:
             (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE),
             (center_x - BLOCK_SIZE / 2 * 3, center_y + BLOCK_SIZE * 2),
         ]
-        for block in blocks:
-            draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
-            )
+        self.__number(blocks)
 
     # pylint: disable=too-many-return-statements
-    def __one_digit(self, points: int, center_x: int = None, center_y: int = None):
+    def __one_digit(self, points: int, center_x: float, center_y: float):
         """Прорисовка очков одной цифрой"""
-        if center_x is None and center_y is None:
-            center_x = SCREEN_LENGTH / 2
-            center_y = SCREEN_WIDTH / 2
-
         match points:
             case 0:
                 return self.__number_0(center_x, center_y)
@@ -272,4 +227,4 @@ class Number:
         elif points // 10 > 0:
             self.__two_digits(points)
         else:
-            self.__one_digit(points)
+            self.__one_digit(points, SCREEN_LENGTH / 2, SCREEN_WIDTH / 2)
