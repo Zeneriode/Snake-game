@@ -1,33 +1,41 @@
+"""
+Реализация класса змеи
+"""
 from random import randint
+from typing import Optional, Tuple
 
+# pylint: disable=no-name-in-module
 from pygame import K_a, K_d, K_s, K_w, Rect, Surface, draw, key
-from snake_constants import (
-    BLOCK_SIZE,
-    SCREEN_LENGTH,
-    SCREEN_WIDTH,
-    SNAKE_COLOR,
-)
+
+# pylint: disable=import-error
+from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, SNAKE_COLOR
 
 
 class Snake:
+    """Змея, которая ползает по игровому полю"""
+
     def __init__(self, surface: Surface) -> None:
         self.size = BLOCK_SIZE
         self.color = SNAKE_COLOR
         self.surface = surface
         self.direction = ""
-        x = (
+        head_x = (
             randint(BLOCK_SIZE, SCREEN_LENGTH - BLOCK_SIZE * 3)
             // BLOCK_SIZE
             * BLOCK_SIZE
         )
-        y = randint(BLOCK_SIZE, SCREEN_WIDTH) // BLOCK_SIZE * BLOCK_SIZE
-        self.coordinates_x: list[int] = [x, x - BLOCK_SIZE]
-        self.coordinates_y: list[int] = [y, y]
+        head_y = randint(BLOCK_SIZE, SCREEN_WIDTH) // BLOCK_SIZE * BLOCK_SIZE
+        self.coordinates_x: list[int] = [head_x, head_x - BLOCK_SIZE]
+        self.coordinates_y: list[int] = [head_y, head_y]
         self.speed = BLOCK_SIZE
 
-    def eat(self) -> bool:
-        """Ест яблоки"""
-        pass
+    def __len__(self):
+        return len(self.coordinates_x) - 2
+
+    def grow(self) -> None:
+        """Змея растёт"""
+        self.coordinates_x.append(-BLOCK_SIZE)
+        self.coordinates_y.append(-BLOCK_SIZE)
 
     def move(self) -> None:
         """Двигает змею"""
@@ -49,25 +57,31 @@ class Snake:
 
     def change_direction(self) -> None:
         """Поворачивает змею"""
-        if key.get_pressed()[K_w]:
+        if key.get_pressed()[K_w] and self.direction != "d":
             self.direction = "u"
 
-        elif key.get_pressed()[K_a]:
+        elif key.get_pressed()[K_a] and self.direction != "r":
             self.direction = "l"
 
-        elif key.get_pressed()[K_s]:
+        elif key.get_pressed()[K_s] and self.direction != "u":
             self.direction = "d"
 
-        elif key.get_pressed()[K_d]:
+        elif key.get_pressed()[K_d] and self.direction != "l":
             self.direction = "r"
 
-    def check_collision(self) -> bool:
+    def check_collision(self) -> Tuple[bool, Optional[str]]:
         """Проверяет не врезалась ли змея"""
-        pass
+        if (
+            0 <= self.coordinates_x[0] <= SCREEN_LENGTH
+            and 0 <= self.coordinates_y[0] <= SCREEN_WIDTH
+        ):
+            return True, None
+        return False, "Ты врезался в стену!"
 
     def draw(self) -> None:
         """Прорисовка змеи"""
-        for i in range(len(self.coordinates_x)):
+        number_of_iterations = len(self.coordinates_x)
+        for i in range(number_of_iterations):
             draw.rect(
                 self.surface,
                 self.color,
