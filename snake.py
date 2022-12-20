@@ -25,7 +25,7 @@ class Snake:
             * BLOCK_SIZE
         )
         head_y = randint(BLOCK_SIZE, SCREEN_WIDTH) // BLOCK_SIZE * BLOCK_SIZE
-        self.coordinates_x: list[int] = [head_x, head_x - BLOCK_SIZE]
+        self.coordinates_x: list[int] = [head_x, head_x]
         self.coordinates_y: list[int] = [head_y, head_y]
         self.speed = BLOCK_SIZE
 
@@ -76,7 +76,7 @@ class Snake:
             and 0 <= self.coordinates_y[0] <= SCREEN_WIDTH
         ):
             return True, None
-        return False, "Ты врезался в стену!"
+        return False, "Вы врезались в стену!"
 
     def draw(self) -> None:
         """Прорисовка змеи"""

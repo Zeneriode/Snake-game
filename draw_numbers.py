@@ -194,10 +194,9 @@ class Number:
             case _:
                 return self.__number_9(center_x, center_y)
 
-    def __two_digits(self, points: int):
+    def __two_digits(self, points: int, center_x: int, center_y: int):
         """Прорисовка очков двумя цифрами"""
         first, second = points // 10, points % 10
-        center_x, center_y = SCREEN_LENGTH / 2, SCREEN_WIDTH / 2
 
         distance_between_digits = BLOCK_SIZE * 10
         first_x = center_x - distance_between_digits / 6
@@ -206,10 +205,9 @@ class Number:
         self.__one_digit(first, first_x, center_y)
         self.__one_digit(second, second_x, center_y)
 
-    def __three_digits(self, points: int):
+    def __three_digits(self, points: int, center_x: int, center_y: int):
         """Прорисовка очков тремя цифрами"""
         first, second, third = points // 100, points // 10 % 10, points % 10
-        center_x, center_y = SCREEN_LENGTH / 2, SCREEN_WIDTH / 2
 
         # x - y - z
         distance_between_digits = BLOCK_SIZE * 14
@@ -220,11 +218,57 @@ class Number:
         self.__one_digit(second, center_x, center_y)
         self.__one_digit(third, third_x, center_y)
 
-    def draw(self, points: int):
+    def draw_in_total(self, points: int):
         """Прорисовка цифр"""
         if points // 100 > 0:
-            self.__three_digits(points)
+            self.__three_digits(points, SCREEN_LENGTH / 2, SCREEN_WIDTH / 2)
         elif points // 10 > 0:
-            self.__two_digits(points)
+            self.__two_digits(points, SCREEN_LENGTH / 2, SCREEN_WIDTH / 2)
         else:
             self.__one_digit(points, SCREEN_LENGTH / 2, SCREEN_WIDTH / 2)
+
+    def draw_in_game(self, points: int, snake_x: int, snake_y: int) -> None:
+        """Прорисовка цифр во время игры"""
+        global BLOCK_SIZE
+        reduce_coefficient = 2
+        BLOCK_SIZE /= reduce_coefficient
+        # Узнаем, в какой четверти змея
+        # Запускаем метод прорисовки в конкретной четверти
+        BLOCK_SIZE *= reduce_coefficient
+
+    def __draw_in_quarter1(self, points: int):
+        """Выбор рисования в 1 четверти экрана"""
+        if points // 100 > 0:
+            self.__three_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+        elif points // 10 > 0:
+            self.__two_digits(points, points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+        else:
+            self.__one_digit(points, points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+
+    def __draw_in_quarter2(self, points: int):
+        """Выбор рисования во 2 четверти экрана"""
+        if points // 100 > 0:
+            self.__three_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+        elif points // 10 > 0:
+            self.__two_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+        else:
+            self.__one_digit(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+
+    def __draw_in_quarter3(self, points: int):
+        """Выбор рисования в 3 четверти экрана"""
+        if points // 100 > 0:
+            self.__three_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+        elif points // 10 > 0:
+            self.__two_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+        else:
+            self.__one_digit(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+
+    def __draw_in_quarter4(self, points: int):
+        """Выбор рисования в 4 четверти экрана"""
+        if points // 100 > 0:
+            self.__three_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+        elif points // 10 > 0:
+            self.__two_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+        else:
+            self.__one_digit(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+    # код будет сильно похож на __draw_in_quarter1, разница только в координатах рисования
