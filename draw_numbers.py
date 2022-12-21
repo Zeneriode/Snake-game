@@ -1,6 +1,7 @@
 """
 Реализация класса чисел
 """
+from random import choice
 from pygame import Rect, Surface, draw
 from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, SNAKE_COLOR
 
@@ -18,7 +19,8 @@ class Number:
     def __number(self, blocks: list[tuple[float, float]]):
         for block in blocks:
             draw.rect(
-                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
+                self.surface, self.color,
+                Rect(block[0], block[1], self.size, self.size)
             )
 
     def __number_1(self, center_x: float, center_y: float):
@@ -232,43 +234,63 @@ class Number:
         global BLOCK_SIZE
         reduce_coefficient = 2
         BLOCK_SIZE /= reduce_coefficient
-        # Узнаем, в какой четверти змея
-        # Запускаем метод прорисовки в конкретной четверти
+
+        if snake_x > SCREEN_LENGTH / 2 and snake_y < SCREEN_WIDTH / 2:
+            draw_in_quarter = self.__draw_in_quarter1
+        else:
+            draw_in_quarter = choice(
+                [self.__draw_in_quarter2, self.__draw_in_quarter3,
+                 self.__draw_in_quarter4])
+
+        draw_in_quarter(points)
+
         BLOCK_SIZE *= reduce_coefficient
 
     def __draw_in_quarter1(self, points: int):
         """Выбор рисования в 1 четверти экрана"""
         if points // 100 > 0:
-            self.__three_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__three_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
+                                SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
         elif points // 10 > 0:
-            self.__two_digits(points, points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__two_digits(points,
+                              SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
+                              SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
         else:
-            self.__one_digit(points, points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__one_digit(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
+                             SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
 
     def __draw_in_quarter2(self, points: int):
         """Выбор рисования во 2 четверти экрана"""
         if points // 100 > 0:
-            self.__three_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__three_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
+                                SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
         elif points // 10 > 0:
-            self.__two_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__two_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
+                              SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
         else:
-            self.__one_digit(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__one_digit(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
+                             SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
 
     def __draw_in_quarter3(self, points: int):
         """Выбор рисования в 3 четверти экрана"""
         if points // 100 > 0:
-            self.__three_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__three_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
+                                SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
         elif points // 10 > 0:
-            self.__two_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__two_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
+                              SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
         else:
-            self.__one_digit(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__one_digit(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
+                             SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
 
     def __draw_in_quarter4(self, points: int):
         """Выбор рисования в 4 четверти экрана"""
         if points // 100 > 0:
-            self.__three_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__three_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
+                                SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
         elif points // 10 > 0:
-            self.__two_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__two_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
+                              SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
         else:
-            self.__one_digit(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2, SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
-    # код будет сильно похож на __draw_in_quarter1, разница только в координатах рисования
+            self.__one_digit(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
+                             SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)

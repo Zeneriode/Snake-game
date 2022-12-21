@@ -35,12 +35,13 @@ def game():
             food.draw()
             snake.move()
             check_food()
-            snake_constants.draw_in_game()
-            snake_constants.__draw_in_quarter1()
-            snake_constants.__draw_in_quarter2()
-            snake_constants.__draw_in_quarter3()
-            snake_constants.__draw_in_quarter4()
+            # snake_constants - файл с константами, там вообще функций или
+            # методов нет, как ты его использовать собрался?
             # TODO запустить draw_in_game
+            # 1 раз мы уже рисовали счет - в конце игры
+            # Найди, как мы это делали, и просто повтори
+            # только теперь нужно использовать не тот же метод, что там
+            # (там метод рисует окончательный счет)
 
         snake.change_direction()
 
