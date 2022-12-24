@@ -13,7 +13,7 @@ class Number:
 
     def __init__(self, surface: Surface):
         """Базовый конструктор для создания счета очков"""
-        self.size = BLOCK_SIZE + 1
+        self.size: float = BLOCK_SIZE + 1
         self.color = SNAKE_COLOR
         self.surface = surface
         self.next_draw_in_quarter = choice(
@@ -263,19 +263,19 @@ class Number:
             self.__three_digits(
                 points,
                 SCREEN_LENGTH - 10 * self.size / 2,
-                SCREEN_WIDTH - 90 * self.size / 2
+                SCREEN_WIDTH - 90 * self.size / 2,
             )
         elif points // 10 > 0:
             self.__two_digits(
                 points,
                 SCREEN_LENGTH - 10 * self.size / 2,
-                SCREEN_WIDTH - 90 * self.size / 2
+                SCREEN_WIDTH - 90 * self.size / 2,
             )
         else:
             self.__one_digit(
                 points,
                 SCREEN_LENGTH - 10 * self.size / 2,
-                SCREEN_WIDTH - 90 * self.size / 2
+                SCREEN_WIDTH - 90 * self.size / 2,
             )
 
     def __draw_in_quarter2(self, points: int):
@@ -284,19 +284,19 @@ class Number:
             self.__three_digits(
                 points,
                 SCREEN_LENGTH - 165 * self.size / 2,
-                SCREEN_WIDTH - 90 * self.size / 2
+                SCREEN_WIDTH - 90 * self.size / 2,
             )
         elif points // 10 > 0:
             self.__two_digits(
                 points,
                 SCREEN_LENGTH - 165 * self.size / 2,
-                SCREEN_WIDTH - 90 * self.size / 2
+                SCREEN_WIDTH - 90 * self.size / 2,
             )
         else:
             self.__one_digit(
                 points,
                 SCREEN_LENGTH - 165 * self.size / 2,
-                SCREEN_WIDTH - 90 * self.size / 2
+                SCREEN_WIDTH - 90 * self.size / 2,
             )
 
     def __draw_in_quarter3(self, points: int):
@@ -305,19 +305,19 @@ class Number:
             self.__three_digits(
                 points,
                 SCREEN_LENGTH - 165 * self.size / 2,
-                SCREEN_WIDTH - 10 * self.size / 2
+                SCREEN_WIDTH - 10 * self.size / 2,
             )
         elif points // 10 > 0:
             self.__two_digits(
                 points,
                 SCREEN_LENGTH - 165 * self.size / 2,
-                SCREEN_WIDTH - 10 * self.size / 2
+                SCREEN_WIDTH - 10 * self.size / 2,
             )
         else:
             self.__one_digit(
                 points,
                 SCREEN_LENGTH - 165 * self.size / 2,
-                SCREEN_WIDTH - 10 * self.size / 2
+                SCREEN_WIDTH - 10 * self.size / 2,
             )
 
     def __draw_in_quarter4(self, points: int):
@@ -326,17 +326,17 @@ class Number:
             self.__three_digits(
                 points,
                 SCREEN_LENGTH - 10 * self.size / 2,
-                SCREEN_WIDTH - 10 * self.size / 2
+                SCREEN_WIDTH - 10 * self.size / 2,
             )
         elif points // 10 > 0:
             self.__two_digits(
                 points,
                 SCREEN_LENGTH - 10 * self.size / 2,
-                SCREEN_WIDTH - 10 * self.size / 2
+                SCREEN_WIDTH - 10 * self.size / 2,
             )
         else:
             self.__one_digit(
                 points,
                 SCREEN_LENGTH - 10 * self.size / 2,
-                SCREEN_WIDTH - 10 * self.size / 2
+                SCREEN_WIDTH - 10 * self.size / 2,
             )

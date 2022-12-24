@@ -8,6 +8,7 @@ from time import sleep
 from draw_numbers import Number
 from food import Food
 from land import Land
+
 # pylint: disable=no-name-in-module
 from pygame import K_ESCAPE, QUIT, display, draw, event, font, init, key, time
 from snake import Snake
@@ -32,8 +33,8 @@ reason_of_death = ""
 def check_food() -> Food:
     """Проверяет, надо ли есть еду"""
     if (
-            snake.coordinates_x[0] == food.x_coordinate
-            and snake.coordinates_y[0] == food.y_coordinate
+        snake.coordinates_x[0] == food.x_coordinate
+        and snake.coordinates_y[0] == food.y_coordinate
     ):
         snake.grow()
         return Food(screen)
