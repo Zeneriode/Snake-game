@@ -1,11 +1,23 @@
+"""
+Основной файл игры. Используйте его для запуска самой игры.
+В этом файле создаются все предметы, необходимые для игры, а также реализованы
+функции, которые запускают игру и экран после игры.
+"""
 from time import sleep
+
+from draw_numbers import Number
 from food import Food
 from land import Land
-from pygame import K_ESCAPE, QUIT, display, draw, event, key, time, font, init
+# pylint: disable=no-name-in-module
+from pygame import K_ESCAPE, QUIT, display, draw, event, font, init, key, time
 from snake import Snake
-from draw_numbers import Number
-from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, \
-    SNAKE_COLOR, LINE_COLOR
+from snake_constants import (
+    BLOCK_SIZE,
+    LINE_COLOR,
+    SCREEN_LENGTH,
+    SCREEN_WIDTH,
+    SNAKE_COLOR,
+)
 
 screen = display.set_mode((SCREEN_LENGTH, SCREEN_WIDTH))  # Игровое окно
 land = Land(screen)  # Задний фон
@@ -13,21 +25,25 @@ snake = Snake(screen)  # Змея
 food = Food(screen)  # еда
 clock = time.Clock()  # смена кадров
 result = Number(screen)
+# pylint: disable=C0103
 reason_of_death = ""
 
 
-def check_food():
+def check_food() -> Food:
     """Проверяет, надо ли есть еду"""
-    global food
-    if snake.coordinates_x[0] == food.x_coordinate and snake.coordinates_y[
-        0] == food.y_coordinate:
-        food = Food(screen)
+    if (
+            snake.coordinates_x[0] == food.x_coordinate
+            and snake.coordinates_y[0] == food.y_coordinate
+    ):
         snake.grow()
+        return Food(screen)
+    return food
 
 
 def game():
     """Игра запускается и работает до выключения пользователем"""
-    global reason_of_death
+    # pylint: disable=[C0103, W0603]
+    global reason_of_death, food
     play = True  # Работает ли игровое окно или нет
     frame = 0
     while play:
@@ -36,7 +52,7 @@ def game():
             snake.draw()
             food.draw()
             snake.move()
-            check_food()
+            food = check_food()
 
         snake.change_direction()
 
