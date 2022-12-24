@@ -4,7 +4,8 @@ from land import Land
 from pygame import K_ESCAPE, QUIT, display, draw, event, key, time, font, init
 from snake import Snake
 from draw_numbers import Number
-from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, SNAKE_COLOR, LINE_COLOR
+from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, \
+    SNAKE_COLOR, LINE_COLOR
 
 screen = display.set_mode((SCREEN_LENGTH, SCREEN_WIDTH))  # Игровое окно
 land = Land(screen)  # Задний фон
@@ -18,7 +19,8 @@ reason_of_death = ""
 def check_food():
     """Проверяет, надо ли есть еду"""
     global food
-    if snake.coordinates_x[0] == food.x_coordinate and snake.coordinates_y[0] == food.y_coordinate:
+    if snake.coordinates_x[0] == food.x_coordinate and snake.coordinates_y[
+        0] == food.y_coordinate:
         food = Food(screen)
         snake.grow()
 
@@ -35,14 +37,6 @@ def game():
             food.draw()
             snake.move()
             check_food()
-            result.draw_in_game(len(snake), snake.coordinates_x[0], snake.coordinates_y[0])
-            # snake_constants - файл с константами, там вообще функций или
-            # методов нет, как ты его использовать собрался?
-            # TODO запустить draw_in_game
-            # 1 раз мы уже рисовали счет - в конце игры
-            # Найди, как мы это делали, и просто повтори
-            # только теперь нужно использовать не тот же метод, что там
-            # (там метод рисует окончательный счет)
 
         snake.change_direction()
 
@@ -51,6 +45,9 @@ def game():
 
         for i in range(0, SCREEN_WIDTH, BLOCK_SIZE):
             draw.line(screen, LINE_COLOR, (0, i), (SCREEN_LENGTH, i))
+
+        result.draw_in_game(len(snake), snake.coordinates_x[0],
+                            snake.coordinates_y[0])
 
         display.update()
         clock.tick(200)
