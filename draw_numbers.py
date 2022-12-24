@@ -249,48 +249,48 @@ class Number:
     def __draw_in_quarter1(self, points: int):
         """Выбор рисования в 1 четверти экрана"""
         if points // 100 > 0:
-            self.__three_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
-                                SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__three_digits(points, SCREEN_LENGTH - 10 * BLOCK_SIZE / 2,
+                                SCREEN_WIDTH - 90 * BLOCK_SIZE / 2)
         elif points // 10 > 0:
             self.__two_digits(points,
-                              SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
-                              SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+                              SCREEN_LENGTH - 10 * BLOCK_SIZE / 2,
+                              SCREEN_WIDTH - 90 * BLOCK_SIZE / 2)
         else:
-            self.__one_digit(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
-                             SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__one_digit(points, SCREEN_LENGTH - 10 * BLOCK_SIZE / 2,
+                             SCREEN_WIDTH - 90 * BLOCK_SIZE / 2)
 
     def __draw_in_quarter2(self, points: int):
         """Выбор рисования во 2 четверти экрана"""
         if points // 100 > 0:
-            self.__three_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
-                                SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__three_digits(points, SCREEN_LENGTH - 165 * BLOCK_SIZE / 2,
+                                SCREEN_WIDTH - 90 * BLOCK_SIZE / 2)
         elif points // 10 > 0:
-            self.__two_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
-                              SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__two_digits(points, SCREEN_LENGTH - 165 * BLOCK_SIZE / 2,
+                              SCREEN_WIDTH - 90 * BLOCK_SIZE / 2)
         else:
-            self.__one_digit(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
-                             SCREEN_WIDTH - 23 * BLOCK_SIZE / 2)
+            self.__one_digit(points, SCREEN_LENGTH - 165 * BLOCK_SIZE / 2,
+                             SCREEN_WIDTH - 90 * BLOCK_SIZE / 2)
 
     def __draw_in_quarter3(self, points: int):
         """Выбор рисования в 3 четверти экрана"""
         if points // 100 > 0:
-            self.__three_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
-                                SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__three_digits(points, SCREEN_LENGTH - 165 * BLOCK_SIZE / 2,
+                                SCREEN_WIDTH - 10 * BLOCK_SIZE / 2)
         elif points // 10 > 0:
-            self.__two_digits(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
-                              SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__two_digits(points, SCREEN_LENGTH - 165 * BLOCK_SIZE / 2,
+                              SCREEN_WIDTH - 10 * BLOCK_SIZE / 2)
         else:
-            self.__one_digit(points, SCREEN_LENGTH - 42 * BLOCK_SIZE / 2,
-                             SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__one_digit(points, SCREEN_LENGTH - 165 * BLOCK_SIZE / 2,
+                             SCREEN_WIDTH - 10 * BLOCK_SIZE / 2)
 
     def __draw_in_quarter4(self, points: int):
         """Выбор рисования в 4 четверти экрана"""
         if points // 100 > 0:
-            self.__three_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
-                                SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__three_digits(points, SCREEN_LENGTH - 10 * BLOCK_SIZE / 2,
+                                SCREEN_WIDTH - 10 * BLOCK_SIZE / 2)
         elif points // 10 > 0:
-            self.__two_digits(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
-                              SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__two_digits(points, SCREEN_LENGTH - 10 * BLOCK_SIZE / 2,
+                              SCREEN_WIDTH - 10 * BLOCK_SIZE / 2)
         else:
-            self.__one_digit(points, SCREEN_LENGTH - 2 * BLOCK_SIZE / 2,
-                             SCREEN_WIDTH - 2 * BLOCK_SIZE / 2)
+            self.__one_digit(points, SCREEN_LENGTH - 10 * BLOCK_SIZE / 2,
+                             SCREEN_WIDTH - 10 * BLOCK_SIZE / 2)

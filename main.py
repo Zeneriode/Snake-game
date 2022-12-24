@@ -35,6 +35,7 @@ def game():
             food.draw()
             snake.move()
             check_food()
+            result.draw_in_game(len(snake), snake.coordinates_x[0], snake.coordinates_y[0])
             # snake_constants - файл с константами, там вообще функций или
             # методов нет, как ты его использовать собрался?
             # TODO запустить draw_in_game
