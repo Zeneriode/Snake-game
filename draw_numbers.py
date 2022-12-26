@@ -283,19 +283,19 @@ class Number:
         if points // 100 > 0:
             self.__three_digits(
                 points,
-                SCREEN_LENGTH - 165 * self.size / 2,
+                SCREEN_LENGTH - 160 * self.size / 2,
                 SCREEN_WIDTH - 90 * self.size / 2,
             )
         elif points // 10 > 0:
             self.__two_digits(
                 points,
-                SCREEN_LENGTH - 165 * self.size / 2,
+                SCREEN_LENGTH - 160 * self.size / 2,
                 SCREEN_WIDTH - 90 * self.size / 2,
             )
         else:
             self.__one_digit(
                 points,
-                SCREEN_LENGTH - 165 * self.size / 2,
+                SCREEN_LENGTH - 160 * self.size / 2,
                 SCREEN_WIDTH - 90 * self.size / 2,
             )
 
@@ -304,19 +304,19 @@ class Number:
         if points // 100 > 0:
             self.__three_digits(
                 points,
-                SCREEN_LENGTH - 165 * self.size / 2,
+                SCREEN_LENGTH - 160 * self.size / 2,
                 SCREEN_WIDTH - 10 * self.size / 2,
             )
         elif points // 10 > 0:
             self.__two_digits(
                 points,
-                SCREEN_LENGTH - 165 * self.size / 2,
+                SCREEN_LENGTH - 160 * self.size / 2,
                 SCREEN_WIDTH - 10 * self.size / 2,
             )
         else:
             self.__one_digit(
                 points,
-                SCREEN_LENGTH - 165 * self.size / 2,
+                SCREEN_LENGTH - 160 * self.size / 2,
                 SCREEN_WIDTH - 10 * self.size / 2,
             )
 
