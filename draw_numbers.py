@@ -27,8 +27,7 @@ class Number:
     def __number(self, blocks: list[tuple[float, float]]):
         for block in blocks:
             draw.rect(
-                self.surface, self.color,
-                Rect(block[0], block[1], self.size, self.size)
+                self.surface, self.color, Rect(block[0], block[1], self.size, self.size)
             )
 
     def __number_1(self, center_x: float, center_y: float):
