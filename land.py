@@ -7,7 +7,12 @@ from snake_constants import LAND_COLOR, SCREEN_LENGTH, SCREEN_WIDTH
 
 # pylint: disable=too-few-public-methods
 class Land:
-    """Задний фон игры"""
+    """
+    Задний фон игры\n
+
+    Methods:
+        draw рисует фон
+    """
 
     def __init__(self, surface: Surface) -> None:
         """Базовый конструктор для создания фона игры"""

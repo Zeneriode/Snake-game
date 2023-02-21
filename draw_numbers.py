@@ -9,7 +9,13 @@ from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, SNAKE_COLOR
 
 # pylint: disable=too-few-public-methods
 class Number:
-    """Прорисовка цифр"""
+    """
+    Прорисовка цифр\n
+
+    Methods:
+        draw_in_total прорисовка цифр в конце
+        draw_in_game прорисовка цифр во время игры
+    """
 
     def __init__(self, surface: Surface):
         """Базовый конструктор для создания счета очков"""
@@ -228,7 +234,7 @@ class Number:
         self.__one_digit(third, third_x, center_y)
 
     def draw_in_total(self, points: int):
-        """Прорисовка цифр"""
+        """Прорисовка цифр в конце"""
         if points // 100 > 0:
             self.__three_digits(points, SCREEN_LENGTH / 2, SCREEN_WIDTH / 2)
         elif points // 10 > 0:

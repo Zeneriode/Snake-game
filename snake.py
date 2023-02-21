@@ -12,7 +12,17 @@ from snake_constants import BLOCK_SIZE, SCREEN_LENGTH, SCREEN_WIDTH, SNAKE_COLOR
 
 
 class Snake:
-    """Змея, которая ползает по игровому полю"""
+    """
+    Змея, которая ползает по игровому полю\n
+
+    Methods:
+        grow растит змею
+        get_effect даёт эффект змее
+        move двигает змею
+        change_direction поворачивает змею
+        check_collision проверяет не врезалась ли змея
+        draw рисует змею
+    """
 
     def __init__(self, surface: Surface) -> None:
         self.size = BLOCK_SIZE
@@ -36,6 +46,10 @@ class Snake:
         """Змея растёт"""
         self.coordinates_x.append(-BLOCK_SIZE)
         self.coordinates_y.append(-BLOCK_SIZE)
+
+    def get_effect(self, effect: tuple[str, float]):
+        if effect[0] == "вырасти":
+            self.grow()
 
     def move(self) -> None:
         """Двигает змею"""

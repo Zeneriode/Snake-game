@@ -6,7 +6,7 @@
 from time import sleep
 
 from draw_numbers import Number
-from food import Food
+from food import Food, create_food, create_start_foods, DefaultFood, CoolFood
 from land import Land
 
 # pylint: disable=no-name-in-module
@@ -23,37 +23,54 @@ from snake_constants import (
 screen = display.set_mode((SCREEN_LENGTH, SCREEN_WIDTH))  # Игровое окно
 land = Land(screen)  # Задний фон
 snake = Snake(screen)  # Змея
-food = Food(screen)  # еда
+foods = []
+create_start_foods(foods=foods, snake=snake, surface=screen)
 clock = time.Clock()  # смена кадров
 result = Number(screen)
 # pylint: disable=C0103
 reason_of_death = ""
 
 
+# TODO (пока не трогать) подправить взаимодействие со змеей (пока она всегда растет на 1 блок)
+# TODO (если ещё нужно) подготовить 1 задачу по for с уроков по информатике
+# TODO (если не получается todo снизу) подготовить вопросы по вещам, которые не ясны (например, что значит "-> Food")
 def check_food() -> Food:
     """Проверяет, надо ли есть еду"""
+    # TODO сделать всё согласно плану снизу. Если не получается - писать Тиме или придумать новый план
+    # Главное - чтобы всё работало
+    """
+    как работает функция
+    0) функция должна работать каждый кадр
+    1) проверяем координаты еды и змеи (могу)
+    2) Если совпадают:
+    2.1) Убираем еду на этих координатах (не могу)
+    2.2) Добавляем 1 блок змеи к змейке (могу)
+    2.3) Создаём новый блок еды на экране (не могу)
+    """
+    for food in foods():
     if (
-        snake.coordinates_x[0] == food.x_coordinate
-        and snake.coordinates_y[0] == food.y_coordinate
+            snake.coordinates_x[0] == food.x_coordinate
+            and snake.coordinates_y[0] == food.y_coordinate
     ):
         snake.grow()
-        return Food(screen)
-    return food
+        food.creature()
 
 
 def game():
     """Игра запускается и работает до выключения пользователем"""
     # pylint: disable=[C0103, W0603]
-    global reason_of_death, food
+    global reason_of_death, foods
     play = True  # Работает ли игровое окно или нет
     frame = 0
     while play:
         if frame % 35 == 0:
             land.draw()
             snake.draw()
-            food.draw()
+            for food in foods:
+                food.draw()
+
             snake.move()
-            food = check_food()
+            check_food()
 
         snake.change_direction()
 
